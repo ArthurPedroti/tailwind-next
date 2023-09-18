@@ -1,6 +1,9 @@
+'use client'
+
 import {
   BarChart,
   CheckSquare,
+  ChevronDown,
   Cog,
   Flag,
   Home,
@@ -14,6 +17,58 @@ import { NavItem } from './NavItem'
 import { UsedSpaceWidget } from './UsedSpaceWidget'
 import { Profile } from './Profile'
 import * as Input from '../Input'
+import { CollapsibleNavItem, MenuItem } from './CollapsibleNavItem'
+
+const MenuItem: MenuItem[] = [
+  {
+    section: 'Geral',
+    icon: 'apple',
+    menus: [
+      {
+        title: 'Pedidos de Compra',
+        link: '/purchases',
+        icon: 'bar-chart',
+      },
+      {
+        title: 'Expedição',
+        link: '/gate',
+        icon: 'check-square',
+      },
+    ],
+  },
+  {
+    section: 'Compras',
+    icon: 'badge-minus',
+    menus: [
+      {
+        title: 'Pedidos de Compra',
+        link: '/purchases',
+        icon: 'ferris-wheel',
+      },
+      {
+        title: 'Expedição',
+        link: '/gate',
+        icon: 'tablets',
+      },
+    ],
+  },
+  {
+    section: 'Estoque',
+    icon: 'send-to-back',
+    menus: [
+      {
+        title: 'Pedidos de Compra',
+        link: '/purchases',
+        icon: 'save',
+      },
+      {
+        title: 'Expedição',
+        link: '/gate',
+        icon: 'diamond',
+      },
+    ],
+  },
+]
 
 export function Sidebar() {
   return (
@@ -28,12 +83,7 @@ export function Sidebar() {
       </Input.Root>
 
       <nav className="space-y-0.5">
-        <NavItem title="Home" icon={Home} />
-        <NavItem title="Dashboard" icon={BarChart} />
-        <NavItem title="Projects" icon={SquareStack} />
-        <NavItem title="Tasks" icon={CheckSquare} />
-        <NavItem title="Reporting" icon={Flag} />
-        <NavItem title="Users" icon={Users} />
+        <CollapsibleNavItem menuItems={MenuItem} />
       </nav>
 
       <div className="mt-auto flex flex-col gap-6">
