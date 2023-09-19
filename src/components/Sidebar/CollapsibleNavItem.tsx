@@ -25,7 +25,7 @@ export function CollapsibleNavItem({ menuItems }: CollapsibleNavItemProps) {
       {menuItems.map((section) => {
         const LucideIcon = dynamic(dynamicIconImports[section.icon], {
           loading: () => (
-            <Loader2 className="animate-spin h-5 w-5 text-zinc-500" />
+            <Loader2 className="h-5 w-5 animate-spin text-zinc-500" />
           ),
         })
         return (
@@ -33,26 +33,26 @@ export function CollapsibleNavItem({ menuItems }: CollapsibleNavItemProps) {
             key={section.section}
             className="group/root flex flex-col"
           >
-            <Collapsible.Trigger className="group flex items-center gap-3 rounded px-3 py-2 hover:bg-violet-50">
+            <Collapsible.Trigger className="group flex items-center gap-3 rounded px-3 py-2 hover:bg-violet-50 dark:hover:bg-zinc-800">
               <LucideIcon className="h-5 w-5 text-zinc-500" />
-              <span className="font-medium text-zinc-700 group-hover:text-violet-500">
+              <span className="font-medium text-zinc-700 group-hover:text-violet-500 dark:text-zinc-100 dark:group-hover:text-violet-300">
                 {section.section}
               </span>
 
-              <ChevronDown className="ml-auto h-5 w-5 text-zinc-400 group-hover:text-violet-300  group-data-[state=open]/root:rotate-180 transition-transform" />
+              <ChevronDown className="ml-auto h-5 w-5 text-zinc-400 transition-transform  group-hover:text-violet-300 group-data-[state=open]/root:rotate-180 dark:text-zinc-600" />
             </Collapsible.Trigger>
-            <Collapsible.Content className="overflow-hidden data-[state=closed]:animate-collapsible-close data-[state=open]:animate-collapsible-open px-3 py-0.5 ml-2">
+            <Collapsible.Content className="ml-2 overflow-hidden px-3 py-0.5 data-[state=closed]:animate-collapsible-close data-[state=open]:animate-collapsible-open">
               {section.menus.map((menu) => {
                 const LucideIcon = dynamic(dynamicIconImports[menu.icon], {
                   loading: () => (
-                    <Loader2 className="animate-spin h-5 w-5 text-zinc-500" />
+                    <Loader2 className="h-5 w-5 animate-spin text-zinc-500" />
                   ),
                 })
                 return (
                   <a
                     key={menu.title}
                     href=""
-                    className="group/item flex items-center gap-3 rounded px-3 py-2 hover:bg-violet-50"
+                    className="group/item flex items-center gap-3 rounded px-3 py-2 hover:bg-violet-50 dark:hover:bg-zinc-800"
                   >
                     {/* <Suspense fallback={fallback}> */}
                     <LucideIcon className="h-5 w-5 text-zinc-500" />
@@ -60,7 +60,7 @@ export function CollapsibleNavItem({ menuItems }: CollapsibleNavItemProps) {
                     {/* <SquareStack className="h-5 w-5 text-zinc-500" /> */}
                     {/* {menu.icon} */}
 
-                    <span className="font-medium text-zinc-700 group-hover/item:text-violet-500">
+                    <span className="font-medium text-zinc-700 group-hover/item:text-violet-500 dark:text-zinc-100 dark:group-hover/item:text-violet-300">
                       {menu.title}
                     </span>
                   </a>
